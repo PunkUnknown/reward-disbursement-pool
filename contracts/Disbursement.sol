@@ -24,6 +24,11 @@ contract Disbursement is Ownable {
         claimant = claimant_;
     }
 
+    constructor(address claimant_, uint256 claimPercentage_) public {
+        claimant = claimant_;
+        claimPercentage = claimPercentage_;
+    }
+
     function checkStabilizerAndGetReward(
         int256 supplyDelta_,
         int256 rebaseLag_,
