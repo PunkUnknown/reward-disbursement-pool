@@ -12,8 +12,8 @@ contract Disbursement is Ownable {
 
     IERC20 public debase = IERC20(0x9248c485b0B80f76DA451f167A8db30F33C70907);
     address public policy = 0x989Edd2e87B1706AB25b2E8d9D9480DE3Cc383eD;
+    address public claimant = 0xf038C1cfaDAce2C0E5963Ab5C0794B9575e1D2c2;
 
-    address public claimant;
     uint256 public claimPercentage;
 
     function setClaimPercentage(uint256 claimPercentage_) external onlyOwner {
@@ -24,8 +24,7 @@ contract Disbursement is Ownable {
         claimant = claimant_;
     }
 
-    constructor(address claimant_, uint256 claimPercentage_) public {
-        claimant = claimant_;
+    constructor(uint256 claimPercentage_) public {
         claimPercentage = claimPercentage_;
     }
 
