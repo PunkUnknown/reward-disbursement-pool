@@ -46,8 +46,10 @@ contract Disbursement is Ownable {
         return 0;
     }
 
-    function claimantClaimReward() external {
-        require(msg.sender == claimant, "Only claimant can claim");
-        debase.transfer(claimant, debase.balanceOf(address(this)));
+    function claimantClaimReward() external onlyOwner {
+        uint256 claimable = debase.balanceOf(address(this));
+        if (claimable != 0) {
+            debase.transfer(claimant, claimable);
+        }
     }
 }
